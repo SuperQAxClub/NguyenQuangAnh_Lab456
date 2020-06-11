@@ -14,6 +14,7 @@ namespace NguyenQuangAnh_Lab456.ViewModels
         [Required]
         public string Date { get; set; }
         [Required]
+        [FutureDate]
         public string Time { get; set; }
         [Required]
         public byte Category { get; set; }
