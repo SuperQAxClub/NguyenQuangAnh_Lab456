@@ -18,7 +18,16 @@ namespace NguyenQuangAnh_Lab456.Controllers
             _dbContext = new ApplicationDbContext();
         }
         [Authorize]
+        public ActionResult Create()
+        {
+            var viewModel = new CourseViewModel
+            {
+                Categories = _dbContext.Categories.ToList()
+            };
+            return View(viewModel);
+        }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
             if(!ModelState.IsValid)
@@ -37,14 +46,6 @@ namespace NguyenQuangAnh_Lab456.Controllers
             _dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Home");
-        }
-        public ActionResult Create()
-        {
-            var viewModel = new CourseViewModel
-            {
-                Categories = _dbContext.Categories.ToList()
-            };
-            return View(viewModel);
         }
     }
 }
