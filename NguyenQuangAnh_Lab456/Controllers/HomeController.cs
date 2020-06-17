@@ -1,16 +1,30 @@
-﻿using System;
+﻿using NguyenQuangAnh_Lab456.Models;
+using NguyenQuangAnh_Lab456.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace NguyenQuangAnh_Lab456.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext;
+        public HomeController()
+        {
+            _dbContext = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            var upcommingCourses = _dbContext.Courses.Include(c => c.Lecturer).Include(c => c.Category).Where(c => c.DateTime > DateTime.Now);
+            var viewModel = new CourseViewModel
+            {
+                UpcomingCourses = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(upcommingCourses);
         }
 
         public ActionResult About()
