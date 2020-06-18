@@ -1,7 +1,9 @@
 ﻿@model NguyenQuangAnh_Lab456.ViewModels.CoursesViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Attending</h2>
 <div class="row">
     <ul class="course">
         @foreach (var course in Model.UpcomingCourses)
@@ -36,7 +38,7 @@
     </ul>
 </div>
 @section scripts {
-     <script>
+    <script>
          $(document).ready(function () {
              $(".js-toggle-attendance").click(function (e) {
                  var button = $(e.target);
@@ -59,5 +61,5 @@
                     })
              })
          })
-     </script>   
+    </script>
 }

@@ -9,8 +9,6 @@ namespace NguyenQuangAnh_Lab456.ViewModels
 {
     public class CourseViewModel
     {
-        public IEnumerable<Course> UpcomingCourses { get; set; }
-        public bool ShowAction { get; set; }
         [Required]
         public string Place { get; set; }
         [Required]
