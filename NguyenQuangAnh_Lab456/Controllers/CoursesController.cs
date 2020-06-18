@@ -65,7 +65,7 @@ namespace NguyenQuangAnh_Lab456.Controllers
         public ActionResult Mine()
         {
             var userId = User.Identity.GetUserId();
-            var courses = _dbContext.Courses.Where(c => c.LecturerId == userId && c.DateTime > DateTime.Now).Include(l => l.Lecturer).Include(c => c.Category).ToList();
+            var courses = _dbContext.Courses.Where(c => c.LecturerId == userId && c.DateTime > DateTime.Now && c.IsCanceled == false).Include(l => l.Lecturer).Include(c => c.Category).ToList();
             return View(courses);
         }
         [Authorize]
