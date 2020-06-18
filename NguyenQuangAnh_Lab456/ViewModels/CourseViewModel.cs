@@ -9,6 +9,7 @@ namespace NguyenQuangAnh_Lab456.ViewModels
 {
     public class CourseViewModel
     {
+        public int Id { get; set; }
         [Required]
         public string Place { get; set; }
         [Required]
